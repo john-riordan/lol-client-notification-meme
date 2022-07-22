@@ -2,9 +2,11 @@
   import { saveAs } from 'file-saver';
   import domtoimage from 'dom-to-image';
 
+  import Button from "./lib/Button.svelte"
+
   let useTwitter = false;
-  let twitterUser = 'johnriordan'
-  let avatarURL = 'https://pbs.twimg.com/profile_images/1547641310470815748/jP9mC_36_normal.jpg';
+  let twitterUser = ''
+  let avatarURL = '';
   let notificationTitle = 'Challenges Are Here';
   let notificationText = "Master all five categories, unlock titles & tokens, and upgrade your crystal in League's newest progression system!"
 
@@ -45,8 +47,13 @@
     {:else}
       <input type="text" bind:value={avatarURL} placeholder="Avatar URL" />
     {/if}
-    <button on:click={handleDownload}>Download image</button>
-  </div>
+      <Button round onClick={handleDownload}>
+        <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M33.25 14.15L26.35 21.05V4H21.025V21L14.775 14.75L11 18.525L23.7 31.25L37 17.95L33.25 14.15ZM2 44H46V24L40 30V38H8V30L2 24V44Z" fill="#E3E5EA"/>
+        </svg>
+      </Button>
+      <span>Download image</span>
+    </div>
 </main>
 
 
@@ -57,8 +64,10 @@
 
 <style>
   main {
-    display: grid;
-    place-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
     gap: 1rem;
@@ -69,7 +78,6 @@
     background: url('assets/client-bg.png') no-repeat top left;
     padding: 48px;
     padding-top: 95px;
-    padding-right: 0;
     border: 1px solid hsla(36, 41%, 35%, 1);
     border-top: none;
   }
@@ -107,7 +115,8 @@
     height: 40px;
     flex-shrink: 0;
     border-radius: 50%;
-    background: var(--gold);
+    background: url('assets/fallback.png') no-repeat center var(--gold);
+    background-size: cover;
     overflow: hidden;
   }
   .avatar img {
@@ -129,5 +138,10 @@
   .content {
     margin: 0;
     font-size: 0.875em;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
   }
 </style>
