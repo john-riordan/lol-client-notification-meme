@@ -9,7 +9,6 @@
   let avatarURL = '';
   let notificationTitle = 'Challenges Are Here';
   let notificationText = "Master all five categories, unlock titles & tokens, and upgrade your crystal in League's newest progression system!"
-
   let notificationRef;
 
   function handleDownload() {
@@ -24,7 +23,7 @@
   <div class="frame" bind:this={notificationRef}>
     <div class="notification">
       <span class="tip"></span>
-      <div class="avatar">
+      <div class="avatar" class:noBg={useTwitter || avatarURL}>
         {#if useTwitter}
           <img src={`https://unavatar.io/twitter/${twitterUser}`} alt="Avatar" width="40" height="40" />
         {:else if avatarURL}
@@ -39,7 +38,7 @@
   </div>
   <div class="controls">
     <label>
-      <input type="checkbox" bind:value={useTwitter} />
+      <input type="checkbox" bind:checked={useTwitter} />
       Use twitter profile image
     </label>
     {#if useTwitter}
@@ -55,12 +54,6 @@
       <span>Download image</span>
     </div>
 </main>
-
-
-
-
-
-
 
 <style>
   main {
@@ -115,9 +108,12 @@
     height: 40px;
     flex-shrink: 0;
     border-radius: 50%;
-    background: url('assets/fallback.png') no-repeat center var(--gold);
+    background: url('assets/fallback.png') no-repeat center var(--gold-dark);
     background-size: cover;
     overflow: hidden;
+  }
+  .avatar.noBg {
+    background-image: none;
   }
   .avatar img {
 
