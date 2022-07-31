@@ -92,7 +92,6 @@
     font-weight: 400;
     color: var(--c5);
     margin: 0;
-    
     text-align: center;
   }
   .inspiration {
@@ -163,7 +162,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0.5em;
     color: var(--gold-dark);
   }
   .title {
@@ -171,6 +170,7 @@
     font-family: 'Beaufort for LOL';
     font-size: 1.125em;
     letter-spacing: 0.05em;
+    line-height: 1.25;
   }
   .content {
     margin: 0;
