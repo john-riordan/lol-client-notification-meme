@@ -21,6 +21,10 @@ body {
   padding: 0;
 }
 
+#app {
+  overflow: hidden;
+}
+
 * {
   box-sizing: border-box;
 }

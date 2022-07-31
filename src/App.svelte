@@ -28,6 +28,7 @@
     <span class="inspiration">Inspired by <a href="https://twitter.com/draggles/status/1548006910405709824?s=20&t=MKm31IOTsX49bcRtXiZ2ew">this immaculate tweet</a></span>
   </header>
   <div class="frame" bind:this={notificationRef}>
+    <img src="client-bg-2.png" class="bg-img" alt="" />
     <div class="notification">
       <span class="tip"></span>
       <div class="avatar" class:noBg={useTwitter || avatar}>
@@ -104,11 +105,18 @@
   .frame {
     position: relative;
     display: inline-block;
-    background: url('/client-bg-2.png') no-repeat top left -11px;
     padding: 48px;
     padding-top: 95px;
     border: 2px solid hsla(36, 41%, 35%, 1);
     border-top: none;
+    overflow: hidden;
+  }
+  .bg-img {
+    position: absolute;
+    top: 0;
+    left: -11px;
+    max-width: none;
+    pointer-events: none;
   }
   .notification {
     position: relative;
@@ -201,14 +209,21 @@
   @media (max-width: 600px) {
     main {
       gap: 1rem;
+      padding: 0 1rem;
     }
     .frame {
       padding: 12px;
       padding-top: 98px;
       background: url('/client-bg-2.png') no-repeat top left -85px;
     }
+    .bg-img {
+      position: absolute;
+      top: 0;
+      left: -64px;
+      max-width: none;
+    }
     .notification {
-      width: 300px;
+      width: 340px;
     }
     .controls,
     .controls-left {
