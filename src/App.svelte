@@ -104,7 +104,7 @@
   .frame {
     position: relative;
     display: inline-block;
-    background: url('assets/client-bg-2.png') no-repeat top left -11px;
+    background: url('/client-bg-2.png') no-repeat top left -11px;
     padding: 48px;
     padding-top: 95px;
     border: 2px solid hsla(36, 41%, 35%, 1);
@@ -144,7 +144,7 @@
     height: 40px;
     flex-shrink: 0;
     border-radius: 50%;
-    background: url('assets/fallback.png') no-repeat center var(--gold-dark);
+    background: url('/fallback.png') no-repeat center var(--gold-dark);
     background-size: cover;
     overflow: hidden;
   }
@@ -205,7 +205,7 @@
     .frame {
       padding: 12px;
       padding-top: 98px;
-      background: url('assets/client-bg-2.png') no-repeat top left -85px;
+      background: url('/client-bg-2.png') no-repeat top left -85px;
     }
     .notification {
       width: 300px;
