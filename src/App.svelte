@@ -23,7 +23,10 @@
 </script>
 
 <main>
-  <h1 class="instructions">Both text values (the title and description) are editable.</h1>
+  <header>
+    <h1 class="instructions">Both text values (the title and description) are editable.</h1>
+    <span class="inspiration">Inspired by <a href="https://twitter.com/draggles/status/1548006910405709824?s=20&t=MKm31IOTsX49bcRtXiZ2ew">this immaculate tweet</a></span>
+  </header>
   <div class="frame" bind:this={notificationRef}>
     <div class="notification">
       <span class="tip"></span>
@@ -41,14 +44,14 @@
     </div>
   </div>
   <div class="controls">
-    <div class="flex align-center gap-0_5">
+    <div class="controls-left">
       {#if useTwitter}
-        <div class="flex align-center gap-0_25">
+        <div class="avatar-input">
           <input type="text" bind:this={twitterInput} placeholder="@ twitter handle" class="input" />
           <Button onClick={() => avatar = twitterInput?.value}>Set avatar</Button>
         </div>
       {:else}
-        <div class="flex align-center gap-0_25">
+        <div class="avatar-input">
           <input type="text" bind:this={linkInput} placeholder="Avatar image URL" class="input" />
           <Button onClick={() => avatar = linkInput?.value}>Set avatar</Button>
         </div>
@@ -58,13 +61,16 @@
         <span>Use Twitter Avatar</span>
       </label>
     </div>
-      <Button round onClick={handleDownload} label="Download Image">
-        <svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M33.25 14.15L26.35 21.05V4H21.025V21L14.775 14.75L11 18.525L23.7 31.25L37 17.95L33.25 14.15ZM2 44H46V24L40 30V38H8V30L2 24V44Z" fill="#E3E5EA"/>
-        </svg>
-      </Button>
-    </div>
+    <Button round onClick={handleDownload} label="Download Image" className="download">
+      <svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M33.25 14.15L26.35 21.05V4H21.025V21L14.775 14.75L11 18.525L23.7 31.25L37 17.95L33.25 14.15ZM2 44H46V24L40 30V38H8V30L2 24V44Z" fill="#E3E5EA"/>
+      </svg>
+    </Button>
+  </div>
 </main>
+<footer>
+  <a href="https://twitter.com/johnriordan">@johnriordan</a>
+</footer>
 
 <style>
   main {
@@ -72,16 +78,28 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
     height: 100vh;
     gap: 1.5rem;
+    padding: 0 3rem;
+  }
+  header {
+    text-align: center;
   }
   .instructions {
     display: block;
     font-size: 1em;
     font-weight: 400;
-    color: var(--dark);
+    color: var(--c5);
     margin: 0;
+    
+    text-align: center;
+  }
+  .inspiration {
+    font-size: 0.875em;
+    color: var(--c6);
+  }
+  .inspiration a {
+    color: var(--c5);
   }
   .frame {
     position: relative;
@@ -158,5 +176,47 @@
   }
   .input {
     width: 18ch;
+  }
+  .controls-left {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .avatar-input {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  footer {
+    width: 100%;
+    text-align: center;
+    padding: 3rem;
+    color: var(--c5)
+  }
+  footer a {
+    color: inherit;
+  }
+
+  @media (max-width: 600px) {
+    main {
+      gap: 1rem;
+    }
+    .frame {
+      padding: 12px;
+      padding-top: 98px;
+      background: url('assets/client-bg-2.png') no-repeat top left -85px;
+    }
+    .notification {
+      width: 300px;
+    }
+    .controls,
+    .controls-left {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    :global(.download) {
+      transform: scale(1.2)
+    }
   }
 </style>

@@ -4,7 +4,8 @@
   font-size: 16px;
   font-weight: 400;
 
-  --dark: hsl(208deg 6% 45%);
+  --c5: hsl(208deg 6% 50%);
+  --c6: hsl(208deg 6% 36%);
   --black: hsla(208, 76%, 5%, 1);
   --yellow: hsla(41, 72%, 47%, 1);
   --gold: hsla(37, 62%, 30%, 1);

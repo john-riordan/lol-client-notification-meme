@@ -2,17 +2,18 @@
   export let round = false;
   export let onClick = () => {};
   export let label = '';
+  export let className = '';
 </script>
 
 {#if label}
   <div class="label-container">
-    <button on:click={onClick} class:round>
+    <button on:click={onClick} class:round class={className}>
       <span><slot /></span>
     </button>
     <span class="label">{label}</span>
   </div>
 {:else}
-  <button on:click={onClick} class:round>
+  <button on:click={onClick} class:round class={className}>
     <span><slot /></span>
   </button>
 {/if}
